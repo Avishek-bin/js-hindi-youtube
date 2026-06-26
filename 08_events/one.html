@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200" height="200" id="one" src="https://images.unsplash.com/photo-1781379947431-410dc9388ef8?q=80&w=1165&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1"></li>
+            <li><img width="200" height="200" id="two" src="https://images.unsplash.com/photo-1781461565715-887bd369f481?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 2"></li>
+            <li><img width="200" height="200" id="three" src="https://images.unsplash.com/photo-1781088154901-36177e307015?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 3"></li>
+            <li><a href="https://www.google.com/?zx=1782367806951" style="color: aliceblue;" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // document.getElementById('one').onclick = function(){
+    //     alert("one clicked")
+    // }
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the url");
+    }, false)
+
+    document.getElementById('one').addEventListener('click', function(e){
+        console.log("one clicked");
+        e.stopPropagation()
+    }, false)
+
+    document.getElementById('google').addEventListener('click', function(e){
+        console.log("google clicked");
+        e.stopPropagation()
+        e.preventDefault()
+    }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id)
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+        }
+
+        //removeIt.parentNode.removeChild(removeIt)
+    })
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clintX, clientY, screenX, screenY
+    // altKey, ctrlKey,shiftKey, ketCode
+</script>
+</html>
